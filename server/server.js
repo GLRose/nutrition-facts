@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const axios = require('axios');
 
-
 require('dotenv').config()
 
 let PORT = process.env.PORT;
@@ -25,7 +24,7 @@ app.get('/foods', (req, res) => {
         params: {
             app_id: process.env.API_ID,
             app_key: process.env.API_KEY,
-            ingr: 'apple',
+            ingr: 'cheese',
         }
     }
     axios.request(options).then((response) => {
