@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [food, setFood] = useState(null)
+
+
+  useEffect(() => {
+    const options = {
+      method: 'GET',
+      url: 'http://localhost:8080/foods',
+    }
+    axios.request(options).then((response) => {
+      console.log(response.data)
+      setFood(response.data)
+    }).catch((error) => {
+      console.error(error)
+    })
+  }, [])
+
+  console.log(food);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>Welcome to the home page</div>
+  )
+
 }
 
 export default App;
+
