@@ -1,9 +1,11 @@
-import './App.css';
 import axios from 'axios'
+import './App.css'
+import NutritionForm from './components/NutritionForm';
 import { useState, useEffect } from 'react';
 
 function App() {
   const [food, setFood] = useState(null)
+
 
 
   useEffect(() => {
@@ -13,7 +15,12 @@ function App() {
     }
     axios.request(options).then((response) => {
       console.log(response.data)
-      setFood(response.data)
+      console.log(response.data.parsed.length)
+      if (response.data.parsed.length === 0) {
+        setFood(null);
+      } else {
+        setFood(response.data.text);
+      }
     }).catch((error) => {
       console.error(error)
     })
@@ -22,7 +29,12 @@ function App() {
   console.log(food);
 
   return (
-    <div>Welcome to the home page</div>
+
+    <div>
+      <NutritionForm food={food} />
+      {/* <p>{food}</p> */}
+    </div>
+
   )
 
 }
