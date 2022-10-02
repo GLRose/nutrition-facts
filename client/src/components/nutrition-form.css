@@ -7,9 +7,6 @@
 .nutrition-container {
   display: flex;
   justify-content: center;
-  /* width: 50rem;
-  height: 30rem;
-  border: 0.5rem solid #7611f7; */
   border-radius: 1rem;
 }
 
